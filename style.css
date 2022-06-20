@@ -17,3 +17,18 @@ input {
     border: none;
     font-size: 18px;
 }
+.moviesdata {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 8px;
+}
+.moviecomponent {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 15px;
+    width: 300px;
+    background-color: white;
+    height: 250px;
+}
