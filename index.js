@@ -1,7 +1,10 @@
 //alert("javascript is connected")
 
 let container = document.getElementById('movies');
+let refreshbtn = document.getElementById('refreshbtn');
 let movieshtml = '<div class="moviesdata">'
+
+
 
 //
 function getMovies(){
@@ -58,3 +61,14 @@ console.log("received a response")
 getMovies()
 
 
+
+// ?movie=zoolander
+// window will help the webpage to communicate with the browser because it contains javascript  global variables and functions
+window.addEventListener('load', (event) => {
+    console.log('page is fully loaded');
+});
+
+//adding click listener to the refresh button to refresh movies
+refreshbtn.addEventListener("click",function(e){
+    console.log("refresh button clicked")
+})
