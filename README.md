@@ -22,7 +22,10 @@ i am able to fetch  movies using a get request.  This returns an array of json o
 contains the movie data. i loop through the array using internal for each method to create a html component for
 each movie. i then set the inner html of the movies DOM element to the movies html.
 the inner html changes from loading state to movie elements which users can see
-
+### refresh movies
+This allows the user to refresh movies so as to get new random movies. it also
+allows us to use click event listener in a button and  call various
+functions  when the event is performed by the user.
 ### searchig movies
 This functionality allows users to search movies by title in the API.
 For this i created a for which contains a search input and search button. the user types the
