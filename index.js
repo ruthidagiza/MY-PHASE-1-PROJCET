@@ -2,12 +2,14 @@
 
 let container = document.getElementById('movies');
 let refreshbtn = document.getElementById('refreshbtn');
-let movieshtml = '<div class="moviesdata">'
+let searchform = document.getElementById('searchform');
+let searchinput = document.getElementById('searchinput');
 
 
 
 //
 function getMovies(){
+    container.innerHTML=`<div class='loading'> <p>loading...</p> </div>`
     console.log("movies request was sent")
     fetch("https://owen-wilson-wow-api.herokuapp.com/wows/random?results=100")
     .then(function(response){
@@ -26,6 +28,8 @@ console.log("received a response")
 
 
 function renderMovieELements(movies){
+    let movieshtml = '<div class="moviesdata">'
+
     movies.forEach(function(movie) {
         movieshtml = movieshtml+`<div class="moviecomponent">
           <img src=${movie.poster}  style="height:230px;width:300px;border-radius:10px"/>
@@ -65,17 +69,42 @@ function renderMovieELements(movies){
 
 
 
+getMovies()
 
+function searchMovie(title){
+    container.innerHTML=`<div class='loading'> <p>loading...</p> </div>`
+    console.log("movies request was sent")
+    fetch(`https://owen-wilson-wow-api.herokuapp.com/wows/random?movie=${title}`)
+    .then(function(response){
+
+        return response.json();
+    })
+    .then(function(movies){
+        console.log(movies)
+        renderMovieELements(movies)
+        console.log("an array of json movies received")
+        // console.log(movieslist)
+    })
+}
+//Event Listeners
 
 //adding click listener to the refresh button to refresh movies
 refreshbtn.addEventListener("click",function(e){
-    container.innerHTML="<div> loading </div>"
-   setTimeout(() => {
-       window.document.location.reload()
-   }, 2000);
+    container.innerHTML=`<div class='loading'> <p>loading...</p> </div>`
+  getMovies()
 })
 
+window.addEventListener("DOMContentLoaded",function(e){
+    console.log("Dom content loaded")
+})
 
-getMovies()
+searchform.addEventListener("submit",function(e){
+    e.preventDefault()
 
-
+    let term = searchinput.value
+    //return  if the search text is nil
+    if(term==""){
+            return;
+    }
+    searchMovie(term)
+})
