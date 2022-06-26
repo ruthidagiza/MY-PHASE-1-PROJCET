@@ -8,6 +8,10 @@ h1 {
 body {background-color: #e5e7eb;
 
 }
+p{
+    padding: 3px;
+    margin: 0px;
+}
 input {
     outline: none;
     padding: 13px;
@@ -22,13 +26,21 @@ input {
     flex-wrap: wrap;
     width: 100%;
     padding: 8px;
+    justify-content: space-around;
+}
+.movies{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 8px;
 }
 .moviecomponent {
     display: flex;
     flex-direction: column;
     padding: 5px;
+    margin: 8px;
     border-radius: 15px;
     width: 300px;
     background-color: white;
-    height: 250px;
+
 }
