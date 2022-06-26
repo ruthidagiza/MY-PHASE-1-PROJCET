@@ -9,14 +9,23 @@ let movieshtml = '<div class="moviesdata">'
 //
 function getMovies(){
     console.log("movies request was sent")
-    fetch("https://owen-wilson-wow-api.herokuapp.com/wows/random?results=500")
+    fetch("https://owen-wilson-wow-api.herokuapp.com/wows/random?results=100")
     .then(function(response){
 
 console.log("received a response")
         return response.json();
     })
     .then(function(movies){
+        renderMovieELements(movies)
+        console.log("an array of json movies received")
+        // console.log(movieslist)
+    })
+}
 
+
+
+
+function renderMovieELements(movies){
     movies.forEach(function(movie) {
         movieshtml = movieshtml+`<div class="moviecomponent">
           <img src=${movie.poster}  style="height:230px;width:300px;border-radius:10px"/>
@@ -52,23 +61,21 @@ console.log("received a response")
     // console.log(html)
 
     container.innerHTML = movieshtml
-
-        console.log("an array of json movies received")
-        // console.log(movieslist)
-    })
 }
+
+
+
+
+
+//adding click listener to the refresh button to refresh movies
+refreshbtn.addEventListener("click",function(e){
+    container.innerHTML="<div> loading </div>"
+   setTimeout(() => {
+       window.document.location.reload()
+   }, 2000);
+})
+
 
 getMovies()
 
 
-
-// ?movie=zoolander
-// window will help the webpage to communicate with the browser because it contains javascript  global variables and functions
-window.addEventListener('load', (event) => {
-    console.log('page is fully loaded');
-});
-
-//adding click listener to the refresh button to refresh movies
-refreshbtn.addEventListener("click",function(e){
-    console.log("refresh button clicked")
-})
