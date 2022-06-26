@@ -1,4 +1,5 @@
 # **RUTH MOVIES**
+# [Click here to see the live site](https://ruthidagiza.github.io/MY-PHASE-1-PROJCET/)
 ## This is my phase one project.
 The project contains a website where a user can view movie recomendations
  and also search movies based on their titles. it comprises of a single html file, javascript file and css for styling.
